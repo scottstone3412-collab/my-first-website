@@ -10,9 +10,16 @@
 body{
 margin:0;
 font-family:Arial;
-background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 color:white;
 text-align:center;
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#1c1c1c);
+background-size:400% 400%;
+animation:bgmove 10s infinite alternate;
+}
+
+@keyframes bgmove{
+0%{background-position:left;}
+100%{background-position:right;}
 }
 
 .nav{
@@ -33,31 +40,32 @@ color:cyan;
 
 h1{
 font-size:50px;
-margin-top:60px;
+margin-top:50px;
 }
 
 .games{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 padding:40px;
 }
 
 .card{
 background:#111;
-padding:20px;
+padding:15px;
 border-radius:10px;
+box-shadow:0 0 10px black;
+transition:0.3s;
 }
 
 .card:hover{
-transform:scale(1.05);
-background:#222;
+transform:scale(1.07);
+background:#1b1b1b;
 }
 
-.card a{
-text-decoration:none;
-color:white;
-font-size:20px;
+.card img{
+width:100%;
+border-radius:10px;
 }
 
 .play{
@@ -66,10 +74,18 @@ padding:10px 20px;
 background:cyan;
 border:none;
 cursor:pointer;
+font-size:16px;
 }
 
 .play:hover{
 background:white;
+}
+
+.adbox{
+margin:30px;
+padding:20px;
+background:#111;
+border:2px dashed gray;
 }
 
 </style>
@@ -81,67 +97,70 @@ background:white;
 <div class="nav">
 
 <a href="index.html">Home</a>
-<a href="games.html">Games</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
+<a href="leaderboard.html">Leaderboard</a>
 
 </div>
 
-<h1>🎮 Welcome to My Game Portal</h1>
+<h1>🎮 My Online Game Portal</h1>
 
-<p>Play free online games!</p>
+<p>Play free browser games!</p>
 
 <div class="games">
 
 <div class="card">
-
-<h3>🐍 Snake Game</h3>
-
+<img src="https://i.imgur.com/7QZ6Y7P.png">
+<h3>Snake Game</h3>
 <a href="snake-game.html">
-<button class="play">Play Now</button>
+<button class="play">Play</button>
 </a>
-
 </div>
 
 <div class="card">
-
-<h3>⚽ Ball Game</h3>
-
+<img src="https://i.imgur.com/3ZQ3Z9P.png">
+<h3>Ball Game</h3>
 <a href="ball-game.html">
-<button class="play">Play Now</button>
+<button class="play">Play</button>
 </a>
-
 </div>
 
 <div class="card">
-
-<h3>🧩 Puzzle Game</h3>
-
+<img src="https://i.imgur.com/yP6G5QO.png">
+<h3>Puzzle Game</h3>
 <a href="puzzle-game.html">
-<button class="play">Play Now</button>
+<button class="play">Play</button>
 </a>
-
 </div>
 
 <div class="card">
-
-<h3>🧠 Memory Game</h3>
-
+<img src="https://i.imgur.com/VKQ4X1S.png">
+<h3>Memory Game</h3>
 <a href="memory-game.html">
-<button class="play">Play Now</button>
+<button class="play">Play</button>
 </a>
-
 </div>
 
 <div class="card">
-
-<h3>⚡ Reaction Game</h3>
-
+<img src="https://i.imgur.com/vC5pH4K.png">
+<h3>Reaction Game</h3>
 <a href="reaction-game.html">
-<button class="play">Play Now</button>
+<button class="play">Play</button>
 </a>
+</div>
+
+<div class="card">
+<img src="https://i.imgur.com/CB7wK7O.png">
+<h3>Number Guess</h3>
+<a href="number-guess.html">
+<button class="play">Play</button>
+</a>
+</div>
 
 </div>
+
+<div class="adbox">
+
+<h3>Advertisement</h3>
+<p>Ads will appear here when you connect ads.</p>
 
 </div>
 
