@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reaction Game</title>
+</head>
+
+<body style="text-align:center;background:black;color:white">
+
+<h1>⚡ Reaction Game</h1>
+
+<button onclick="start()">Start</button>
+
+<p id="result"></p>
+
+<script>
+
+let startTime;
+
+function start(){
+
+setTimeout(function(){
+
+startTime=Date.now();
+
+document.body.onclick=function(){
+
+let time=Date.now()-startTime;
+
+document.getElementById("result").innerText="Reaction: "+time+" ms";
+
+}
+
+},Math.random()*3000+2000);
+
+}
+
+</script>
+
+</body>
+</html>
