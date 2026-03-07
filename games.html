@@ -1,44 +1,81 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Games</title>
+
+<title>Game Portal</title>
+
+<style>
+
+body{
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+font-family:Arial;
+text-align:center;
+color:white;
+}
+
+.menu{
+margin-top:20px;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+margin:10px;
+font-size:18px;
+}
+
+.game-button{
+padding:18px 35px;
+font-size:20px;
+margin:15px;
+border:none;
+border-radius:10px;
+background:#00ffcc;
+color:black;
+cursor:pointer;
+transition:0.3s;
+}
+
+.game-button:hover{
+background:#00cc99;
+transform:scale(1.05);
+}
+
+</style>
+
 </head>
 
-<body style="text-align:center;font-family:Arial;background:#f2f2f2">
+<body>
 
-<h2>
+<div class="menu">
+
 <a href="index.html">Home</a> |
 <a href="games.html">Games</a> |
 <a href="about.html">About</a> |
 <a href="contact.html">Contact</a>
-</h2>
 
-<h1>Play Free Games</h1>
+</div>
 
-<p>Choose a game below.</p>
+<h1>🎮 Free Online Games 🎮</h1>
+
+<p>Select a game and start playing.</p>
 
 <br>
 
 <a href="snake-game.html">
-<button style="padding:15px;font-size:18px">
-Play Snake Game
-</button>
+<button class="game-button">🐍 Play Snake Game</button>
 </a>
 
-<br><br>
+<br>
 
 <a href="ball-game.html">
-<button style="padding:15px;font-size:18px">
-Play Ball Game
-</button>
+<button class="game-button">⚽ Play Ball Game</button>
 </a>
 
-<br><br>
+<br>
 
 <a href="puzzle-game.html">
-<button style="padding:15px;font-size:18px">
-Play Puzzle Game
-</button>
+<button class="game-button">🧩 Play Puzzle Game</button>
 </a>
 
 </body>
