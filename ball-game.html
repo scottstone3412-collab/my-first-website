@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Ball Game</title>
+
+</head>
+
+<body style="text-align:center;background:black;color:white;font-family:Arial">
+
+<h2>
+
+<a href="index.html">Home</a> |
+<a href="games.html">Games</a>
+
+</h2>
+
+<h1>⚽ Ball Bounce Game</h1>
+
+<p>Move your mouse to control the paddle.</p>
+
+<canvas id="game" width="500" height="400" style="background:#111"></canvas>
+
+<script>
+
+let canvas=document.getElementById("game");
+let ctx=canvas.getContext("2d");
+
+let ballX=250;
+let ballY=200;
+
+let dx=4;
+let dy=4;
+
+let paddleX=200;
+
+document.addEventListener("mousemove",movePaddle);
+
+function movePaddle(e){
+
+paddleX=e.clientX-250;
+
+}
+
+function game(){
+
+ctx.clearRect(0,0,500,400);
+
+ctx.beginPath();
+ctx.arc(ballX,ballY,10,0,Math.PI*2);
+ctx.fillStyle="white";
+ctx.fill();
+
+ctx.fillRect(paddleX,380,100,10);
+
+ballX+=dx;
+ballY+=dy;
+
+if(ballX<10||ballX>490)dx=-dx;
+
+if(ballY<10)dy=-dy;
+
+if(ballY>370 && ballX>paddleX && ballX<paddleX+100){
+
+dy=-dy;
+
+}
+
+if(ballY>400){
+
+alert("Game Over");
+location.reload();
+
+}
+
+}
+
+setInterval(game,20);
+
+</script>
+
+</body>
+</html>
