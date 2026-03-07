@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Snake Game</title>
+</head>
+
+<body style="text-align:center;font-family:Arial">
+
+<h2>
+<a href="index.html">Home</a> |
+<a href="games.html">Games</a> |
+<a href="about.html">About</a> |
+<a href="contact.html">Contact</a>
+</h2>
+
+<h1>Snake Game</h1>
+
+<p>Use arrow keys to move the snake.</p>
+
+<canvas id="game" width="400" height="400" style="background:black"></canvas>
+
+<script>
+let canvas = document.getElementById("game");
+let ctx = canvas.getContext("2d");
+
+let snake = [{x:200,y:200}];
+let food = {x:100,y:100};
+let dx = 20;
+let dy = 0;
+
+document.addEventListener("keydown", changeDirection);
+
+function changeDirection(event){
+if(event.key==="ArrowUp"){dx=0;dy=-20;}
+if(event.key==="ArrowDown"){dx=0;dy=20;}
+if(event.key==="ArrowLeft"){dx=-20;dy=0;}
+if(event.key==="ArrowRight"){dx=20;dy=0;}
+}
+
+function drawGame(){
+ctx.clearRect(0,0,400,400);
+
+snake.unshift({x:snake[0].x+dx,y:snake[0].y+dy});
+
+if(snake[0].x===food.x && snake[0].y===food.y){
+food.x=Math.floor(Math.random()*20)*20;
+food.y=Math.floor(Math.random()*20)*20;
+}else{
+snake.pop();
+}
+
+ctx.fillStyle="lime";
+snake.forEach(part=>ctx.fillRect(part.x,part.y,20,20));
+
+ctx.fillStyle="red";
+ctx.fillRect(food.x,food.y,20,20);
+}
+
+setInterval(drawGame,200);
+</script>
+
+</body>
+</html>
