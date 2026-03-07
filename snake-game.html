@@ -2,67 +2,112 @@
 <html>
 <head>
 <title>Snake Game</title>
+
+<style>
+
+body{
+text-align:center;
+background:black;
+color:white;
+font-family:Arial;
+}
+
+canvas{
+background:#111;
+margin-top:10px;
+}
+
+.controls button{
+width:70px;
+height:70px;
+font-size:25px;
+margin:5px;
+}
+
+</style>
+
 </head>
 
-<body style="text-align:center;font-family:Arial;background:#f2f2f2">
+<body>
 
 <h2>
+
 <a href="index.html">Home</a> |
-<a href="games.html">Games</a> |
-<a href="about.html">About</a> |
-<a href="contact.html">Contact</a>
+<a href="games.html">Games</a>
+
 </h2>
 
-<h1>Snake Game</h1>
-<p>Use arrow keys to control the snake.</p>
+<h1>🐍 Snake Game</h1>
 
 <h3>Score: <span id="score">0</span></h3>
 
-<canvas id="game" width="400" height="400" style="background:black"></canvas>
+<canvas id="game" width="400" height="400"></canvas>
+
+<br>
+
+<div class="controls">
+
+<button onclick="setDirection('up')">⬆</button>
+
+<br>
+
+<button onclick="setDirection('left')">⬅</button>
+<button onclick="setDirection('down')">⬇</button>
+<button onclick="setDirection('right')">➡</button>
+
+</div>
 
 <script>
 
-let canvas = document.getElementById("game");
-let ctx = canvas.getContext("2d");
+let canvas=document.getElementById("game");
+let ctx=canvas.getContext("2d");
 
-let snake = [{x:200,y:200}];
+let snake=[{x:200,y:200}];
 
-let dx = 20;
-let dy = 0;
+let dx=20;
+let dy=0;
 
-let score = 0;
+let score=0;
 
-let speed = 250; 
+let speed=250;
+
 let gameInterval;
 
-let food = {
-x: Math.floor(Math.random()*20)*20,
-y: Math.floor(Math.random()*20)*20
+let food={
+x:Math.floor(Math.random()*20)*20,
+y:Math.floor(Math.random()*20)*20
 };
 
-document.addEventListener("keydown", changeDirection);
+document.addEventListener("keydown",function(e){
 
-function changeDirection(event){
+if(e.key==="ArrowUp")setDirection("up");
+if(e.key==="ArrowDown")setDirection("down");
+if(e.key==="ArrowLeft")setDirection("left");
+if(e.key==="ArrowRight")setDirection("right");
 
-if(event.key==="ArrowUp" && dy===0){dx=0;dy=-20;}
-if(event.key==="ArrowDown" && dy===0){dx=0;dy=20;}
-if(event.key==="ArrowLeft" && dx===0){dx=-20;dy=0;}
-if(event.key==="ArrowRight" && dx===0){dx=20;dy=0;}
+});
+
+function setDirection(dir){
+
+if(dir==="up" && dy===0){dx=0;dy=-20;}
+if(dir==="down" && dy===0){dx=0;dy=20;}
+if(dir==="left" && dx===0){dx=-20;dy=0;}
+if(dir==="right" && dx===0){dx=20;dy=0;}
 
 }
 
 function startGame(){
-gameInterval = setInterval(gameLoop,speed);
+gameInterval=setInterval(gameLoop,speed);
 }
 
 function gameLoop(){
 
-let head = {x:snake[0].x+dx,y:snake[0].y+dy};
+let head={x:snake[0].x+dx,y:snake[0].y+dy};
 
 if(
-head.x<0 || head.x>=400 ||
-head.y<0 || head.y>=400 ||
-snake.some(part=>part.x===head.x && part.y===head.y)
+head.x<0||head.x>=400||
+head.y<0||head.y>=400||
+snake.some(p=>p.x===head.x&&p.y===head.y)
 ){
 alert("Game Over! Score: "+score);
 location.reload();
@@ -71,7 +116,7 @@ return;
 
 snake.unshift(head);
 
-if(head.x===food.x && head.y===food.y){
+if(head.x===food.x&&head.y===food.y){
 
 score++;
 document.getElementById("score").innerText=score;
@@ -82,7 +127,7 @@ y:Math.floor(Math.random()*20)*20
 };
 
 if(speed>80){
-speed -=10;
+speed-=10;
 clearInterval(gameInterval);
 startGame();
 }
@@ -94,8 +139,8 @@ snake.pop();
 ctx.clearRect(0,0,400,400);
 
 ctx.fillStyle="lime";
-snake.forEach(part=>{
-ctx.fillRect(part.x,part.y,20,20);
+snake.forEach(p=>{
+ctx.fillRect(p.x,p.y,20,20);
 });
 
 ctx.fillStyle="red";
